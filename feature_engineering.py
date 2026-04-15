@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split, GridSearchCV
@@ -10,8 +11,27 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 import warnings
 warnings.filterwarnings('ignore')
 
+# find the Titanic train data in known locations
+possible_paths = [
+    'data/train.csv',
+    'train.csv',
+    '../Project/titanic/train.csv',
+    os.path.expanduser('~/Desktop/python/Project/titanic/train.csv')
+]
+train_path = None
+for path in possible_paths:
+    if os.path.exists(path):
+        train_path = path
+        break
+
+if train_path is None:
+    raise FileNotFoundError(
+        'train.csv not found. Please place the Titanic train file in data/train.csv or one of the expected locations.'
+    )
+
 # load dataset
-df = pd.read_csv('../Project/titanic/train.csv')
+df = pd.read_csv(train_path)
+print(f"Using data file: {train_path}")
 
 print("Shape:", df.shape)
 print("\nMissing values:")
@@ -230,7 +250,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # reload original data for the title survival chart
-raw = pd.read_csv('../Project/titanic/train.csv')
+raw = pd.read_csv(train_path)
 raw['Title'] = raw['Name'].str.split(',').str[1].str.split('.').str[0].str.strip()
 raw['Title'] = raw['Title'].replace(['Mlle', 'Ms'], 'Miss')
 raw['Title'] = raw['Title'].replace('Mme', 'Mrs')
