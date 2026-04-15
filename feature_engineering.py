@@ -11,25 +11,13 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 import warnings
 warnings.filterwarnings('ignore')
 
-# find the Titanic train data in known locations
-possible_paths = [
-    'data/train.csv',
-    'train.csv',
-    '../Project/titanic/train.csv',
-    os.path.expanduser('~/Desktop/python/Project/titanic/train.csv')
-]
-train_path = None
-for path in possible_paths:
-    if os.path.exists(path):
-        train_path = path
-        break
-
-if train_path is None:
+# load dataset from the repo data folder
+train_path = 'data/train.csv'
+if not os.path.exists(train_path):
     raise FileNotFoundError(
-        'train.csv not found. Please place the Titanic train file in data/train.csv or one of the expected locations.'
+        'train.csv not found. Please place the Titanic train file in data/train.csv.'
     )
 
-# load dataset
 df = pd.read_csv(train_path)
 print(f"Using data file: {train_path}")
 
