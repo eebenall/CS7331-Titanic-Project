@@ -80,3 +80,4 @@ CS7331-Titanic-Project/
 
 Random Forest did the best overall — 87.2% accuracy and 0.83 F1 with socioeconomic features. Adding Pclass, Fare, and Title on top of Age/Sex gave a 5–10% boost for most models.
 
+Note: Naive Bayes saw a slight drop with the socioeconomic set, likely because the high correlation between Pclass and Fare violates its feature independence assumption.
