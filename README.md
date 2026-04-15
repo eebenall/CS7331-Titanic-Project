@@ -20,5 +20,3 @@ Furthermore, we will explore data mining techniques to enhance the dataset. For 
    - `accuracy_comparison.png`
    - `f1_comparison.png`
    - `confusion_matrices.png`
-
-If `train.csv` is not in `data/train.csv`, the script also checks `train.csv` and `../Project/titanic/train.csv`.
