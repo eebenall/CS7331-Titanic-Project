@@ -1,0 +1,7 @@
+Variant,Model,Accuracy,F1,ROC-AUC,Best Params
+No Family Features,Naive Bayes,0.776536312849162,0.7222222222222222,0.8258234519104084,{'model__var_smoothing': 1e-09}
+No Family Features,KNN,0.8100558659217877,0.7258064516129032,0.8669301712779973,"{'model__n_neighbors': 7, 'model__weights': 'uniform'}"
+Raw FamilySize Feature,Naive Bayes,0.7932960893854749,0.7375886524822695,0.8345191040843215,{'model__var_smoothing': 1e-09}
+Raw FamilySize Feature,KNN,0.8100558659217877,0.734375,0.8606060606060607,"{'model__n_neighbors': 9, 'model__weights': 'uniform'}"
+Engineered Family Features,Naive Bayes,0.8324022346368715,0.782608695652174,0.8430830039525692,{'model__var_smoothing': 1e-09}
+Engineered Family Features,KNN,0.8268156424581006,0.7596899224806202,0.8640974967061924,"{'model__n_neighbors': 13, 'model__weights': 'uniform'}"
