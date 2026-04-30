@@ -61,23 +61,25 @@ CS7331-Titanic-Project/
 - Extracts titles (Mr, Mrs, Miss, Master, etc.) from the Name column and groups rare ones into "Rare"
 - Fills missing Age with the median age for each title group instead of just the overall median
 - Fills missing Embarked with the most common value, drops Cabin since ~80% is missing
-- Encodes categorical features and scales everything with StandardScaler
+- One-hot encodes Title and Embarked (nominal categoricals); label-encodes Sex (binary)
+- Scaling is done inside a `Pipeline` per feature set so no data leaks into cross-validation
+- Stratified 80/20 train/test split to preserve class balance (38% survivors)
 - Compares 3 feature sets:
   - **Base**: just Age + Sex
   - **Socioeconomic**: Age + Sex + Pclass + Fare + Title
   - **All**: every available feature
 - Tunes each model (NB, KNN, SVM, RF) with GridSearchCV using 5-fold CV on F1
-- Outputs accuracy, F1, confusion matrices, classification reports, and 4 plots
+- Outputs accuracy, F1, precision, recall, confusion matrices, classification reports, and 4 plots
 
 ### Results
 
 | Model | Base Acc | Socio Acc | Gain |
 |-------|:---:|:---:|:---:|
-| Naive Bayes | 78.2% | 77.1% | −1.1% |
-| KNN | 76.5% | 82.1% | +5.6% |
-| SVM | 79.3% | 84.4% | +5.0% |
-| Random Forest | 77.7% | 87.2% | +9.5% |
+| Naive Bayes | 77.7% | 78.2% | +0.6% |
+| KNN | 76.0% | 82.7% | +6.7% |
+| SVM | 77.1% | 81.6% | +4.5% |
+| Random Forest | 73.7% | 83.8% | +10.1% |
 
-Random Forest did the best overall — 87.2% accuracy and 0.83 F1 with socioeconomic features. Adding Pclass, Fare, and Title on top of Age/Sex gave a 5–10% boost for most models.
+Random Forest did the best overall — 83.8% accuracy and 0.785 F1 with socioeconomic features. Adding Pclass, Fare, and Title on top of Age/Sex gave a 5–10% boost for most models.
 
-Note: Naive Bayes saw a slight drop with the socioeconomic set, likely because the high correlation between Pclass and Fare violates its feature independence assumption.
+Note: Naive Bayes barely moved (+0.6%) — its feature independence assumption means adding correlated features like Pclass and Fare provides little benefit.
