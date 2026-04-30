@@ -18,8 +18,8 @@ Furthermore, we will explore data mining techniques to enhance the dataset. For 
 | Component | Status | Owner |
 |-----------|--------|-------|
 | Socioeconomic feature impact & title extraction | Complete | Jeena |
-| Random Forest & SVM model performance | Pending | Everett |
-| KNN & Naive Bayes; family size impact on survival | Pending | Arturo |
+| Random Forest & SVM model performance | Complete | Everett |
+| KNN & Naive Bayes; family size impact on survival | Complete | Arturo |
 
 ## Repository Structure
 
