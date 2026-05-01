@@ -16,6 +16,7 @@ Improvements over v2:
 import pandas as pd
 import numpy as np
 import matplotlib
+from pathlib import Path
 matplotlib.use("Agg")           # non-interactive backend — safe for all environments
 import matplotlib.pyplot as plt
 
@@ -31,7 +32,13 @@ from sklearn.metrics import classification_report, accuracy_score, ConfusionMatr
 # ─────────────────────────────────────────────
 # 1. LOAD DATA
 # ─────────────────────────────────────────────
-df = pd.read_csv("C:/Users/EverettBenally/Documents/eebenall/CS7331-Data_Mining/Project/titanic/train.csv")
+train_path = Path("data") / "train.csv"
+if not train_path.exists():
+    raise FileNotFoundError(
+        "train.csv not found. Please place the Titanic train file in data/train.csv."
+    )
+
+df = pd.read_csv(train_path)
 df = df.dropna(subset=["Survived"])   # safety — target must exist
 
 # ─────────────────────────────────────────────
