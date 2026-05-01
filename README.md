@@ -44,7 +44,7 @@ CS7331-Titanic-Project/
    ```
 3. Run the script:
    ```
-   python feature_engineering.py
+   python3 feature_engineering.py
    ```
 4. The script will generate these files:
    - `survival_by_title.png`
@@ -55,6 +55,18 @@ CS7331-Titanic-Project/
 ---
 
 ## Jeena's Work: Feature Engineering & Socioeconomic Impact
+
+### Data mining workflow
+
+`feature_engineering.py` follows the main data mining lifecycle steps:
+
+1. Load and audit the Titanic training data
+2. Engineer title-based socioeconomic features
+3. Clean missing values and encode categorical columns
+4. Build base, socioeconomic, and all-feature datasets
+5. Tune model parameters using GridSearchCV
+6. Evaluate models with accuracy, precision, recall, F1, reports, and confusion matrices
+7. Save plots for comparison and interpretation
 
 ### What `feature_engineering.py` does
 
